@@ -1,4 +1,4 @@
-function html(title, body) {
+function html(title, body, style) {
   let html = `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,6 +6,8 @@ function html(title, body) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
+
+    ${style}
   </head>
   <body>
     <div id="app">
@@ -16,4 +18,8 @@ function html(title, body) {
 `
   
   return html
+}
+
+module.exports = {
+  html
 }
