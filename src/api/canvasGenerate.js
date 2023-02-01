@@ -7,7 +7,7 @@ let Konva = require('konva/cmj').default
 let w = 1280
 let h = 720
 
-async function canvas(req, res) {
+async function canvasBoard(req, res) {
   // Setting up stage
   const stage = new Konva.Stage({
     container: undefined,
@@ -42,5 +42,5 @@ async function canvas(req, res) {
 }
 
 module.exports = {
-  canvas
+  canvasBoard
 }
