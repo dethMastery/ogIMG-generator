@@ -26,9 +26,25 @@ async function canvasBoard(req, res) {
     y: 0,
     width: w,
     height: h,
-    fill: '#2e2f2f'
+    fill: '#272828'
   })
   base.add(baseBG)
+
+  // bg rect randomize
+  let rectBG = new Konva.Layer()
+  for (i=0; i<10; i++) {
+    let sq = Math.floor(Math.random() * 15) * 10
+    let kool = new Konva.Rect({
+      x: Math.floor(Math.random() * w),
+      y: Math.floor(Math.random() * h),
+      width: sq,
+      height: sq,
+      fill: '#1A1A1A',
+      cornerRadius: 10
+    })
+    kool.rotate(Math.floor(Math.random() * 360))
+    rectBG.add(kool)
+  }
 
   // Text
   let text = new Konva.Layer()
@@ -83,6 +99,7 @@ async function canvasBoard(req, res) {
 
   // Stage Set up
   stage.add(base)
+  stage.add(rectBG)
   stage.add(rect)
   stage.add(text)
 
@@ -93,6 +110,8 @@ async function canvasBoard(req, res) {
 
   // Destroy stage (Avoid RAM Leak)
   base.destroy()
+  rectBG.destroy()
+  rect.destroy()
   stage.destroy()
 
   // Sending to show
